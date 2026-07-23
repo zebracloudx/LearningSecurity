@@ -91,11 +91,11 @@
         <form id="login-form" onsubmit="handleMongoLogin(event)">
             <div class="input-group">
                 <label for="email">Admin Email</label>
-                <input type="email" id="email" required placeholder="admin@ironshield.io">
+                <input type="email" id="email" required placeholder="">
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" required placeholder="••••••••">
+                <input type="password" id="password" required placeholder="">
             </div>
             <button type="submit" class="btn-submit">Authenticate to MongoDB</button>
             <div id="error-msg"></div>
@@ -104,45 +104,49 @@
     </div>
 
     <script>
-        async function handleMongoLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('error-msg');
-            
-            errorDiv.style.color = "var(--accent-cyan)";
-            errorDiv.textContent = "Connecting to MongoDB backend...";
+    async function handleMongoLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('error-msg');
+        
+        errorDiv.style.color = "var(--accent-cyan)";
+        errorDiv.textContent = "Connecting to MongoDB backend...";
 
+        try {
+            const response = await fetch('https://ir0nshield-main.onrender.com/api/test-sync', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    user: email, 
+                    password: password, 
+                    action: 'ADMIN_LOGIN_TIMESTAMP',
+                    timestamp: new Date().toISOString() 
+                })
+            });
+
+            // Read raw text first to prevent JSON parse crashes
+            const rawText = await response.text();
+            let result;
             try {
-                // Sends login telemetry directly to your Render/MongoDB backend API endpoint
-                const response = await fetch('https://ir0nshield-main.onrender.com/api/test-sync', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        user: email, 
-                        password: password, 
-                        action: 'ADMIN_LOGIN_TIMESTAMP',
-                        timestamp: new Date().toISOString() 
-                    })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    errorDiv.style.color = "var(--accent-green)";
-                    errorDiv.textContent = "Synced to MongoDB successfully! Redirecting...";
-                    setTimeout(() => {
-                        window.location.href = 'dashboard.html';
-                    }, 800);
-                } else {
-                    errorDiv.style.color = "var(--accent-pink)";
-                    errorDiv.textContent = result.message || "MongoDB authentication/sync failed.";
-                }
-            } catch (err) {
-                errorDiv.style.color = "var(--accent-pink)";
-                errorDiv.textContent = "Server error: " + err.message;
+                result = JSON.parse(rawText);
+            } catch (e) {
+                result = { message: rawText || "Server responded with non-JSON format" };
             }
+
+            if (response.ok) {
+                errorDiv.style.color = "var(--accent-green)";
+                errorDiv.textContent = "Synced to MongoDB successfully! Redirecting...";
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            } else {
+                errorDiv.style.color = "var(--accent-pink)";
+                errorDiv.textContent = result.message || "MongoDB sync failed.";
+            }
+        } catch (err) {
+            errorDiv.style.color = "var(--accent-pink)";
+            errorDiv.textContent = "Network error: " + err.message;
         }
-    </script>
-</body>
-</html>
+    }
+</script>
