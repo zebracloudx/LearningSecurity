@@ -109,6 +109,22 @@
             box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
         }
 
+        .nav-link {
+            display: block;
+            margin-top: 25px;
+            color: #8be9fd;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #00ffcc;
+            text-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+        }
+
         #response-msg {
             margin-top: 20px;
             font-size: 0.85rem;
@@ -130,6 +146,8 @@
             <button class="btn-cyber" onclick="pingCore()">Engage Telemetry Pulse</button>
             
             <div id="response-msg"></div>
+
+            <a href="/about.html" class="nav-link">&gt;&gt; Access System Intel (About Us)</a>
         </div>
     </div>
 

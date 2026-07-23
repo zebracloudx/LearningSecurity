@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronShield | About Us</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(rgba(5, 8, 15, 0.9), rgba(5, 8, 15, 0.9)), 
+                        url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            color: #00ffcc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(10, 15, 30, 0.85);
+            border: 2px solid #00ffcc;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.25), inset 0 0 15px rgba(0, 255, 204, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .card::before {
+            content: "SYSTEM INTEL";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #05080f;
+            color: #ff007f;
+            padding: 0 15px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            border: 1px solid #ff007f;
+            border-radius: 4px;
+        }
+
+        h1 {
+            color: #00ffcc;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        p {
+            color: #8be9fd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+            color: #ff007f;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.4);
+        }
+
+        .nav-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #00ffcc;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: text-shadow 0.3s;
+        }
+
+        .nav-link:hover {
+            text-shadow: 0 0 10px #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <h1>ABOUT IRONSHIELD</h1>
+            <p>
+                IronShield is an advanced defensive security simulation and threat intelligence platform designed to test infrastructure resilience and map attack surfaces in real-time.
+            </p>
+            <p>
+                Built as an experimental cybersecurity sandbox environment, it integrates containerized workflows, cloud database telemetry tracking, and isolated administrative subdomains.
+            </p>
+            <p>
+                Lead Architect & Operator: <span class="highlight">Sreerekh Vidyadharan</span>
+            </p>
+
+            <a href="/" class="nav-link">&lt;&lt; Return to Main Matrix</a>
+        </div>
+    </div>
+
+</body>
+</html>
