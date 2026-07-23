@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronShield | Threat Intelligence & Defense Lab</title>
+    <title>IronShield | Home</title>
     <style>
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: #131c2e;
-            --accent-green: #10b981;
-            --accent-cyan: #06b6d4;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-color: #1e293b;
-        }
-
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            /* Background image style matching your dark theme */
+            background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), 
+                        url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            color: #f3f4f6;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,87 +22,53 @@
 
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 450px;
             padding: 20px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: rgba(19, 28, 46, 0.9);
+            border: 1px solid #1e293b;
             border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            text-align: center;
         }
 
         h1 {
-            color: var(--accent-cyan);
-            font-size: 1.8rem;
+            color: #06b6d4;
+            font-size: 1.6rem;
             margin-bottom: 10px;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-        }
-
-        .section-title {
-            color: var(--accent-green);
-            font-size: 1.1rem;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
         }
 
         p {
-            color: var(--text-muted);
-            line-height: 1.6;
+            color: #9ca3af;
             font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
         }
 
-        .status-box {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
-        }
-
-        .status-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .status-item span:last-child {
-            color: var(--accent-green);
-            font-weight: bold;
-        }
-
-        .interactive-form {
-            margin-top: 20px;
+        .input-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 15px;
         }
 
         input {
             background: #0b0f19;
-            border: 1px solid var(--border-color);
+            border: 1px solid #1e293b;
             padding: 12px;
             border-radius: 6px;
             color: white;
             font-size: 0.95rem;
+            text-align: center;
         }
 
         input:focus {
             outline: none;
-            border-color: var(--accent-cyan);
+            border-color: #06b6d4;
         }
 
         button {
@@ -128,10 +87,8 @@
         }
 
         #response-msg {
-            text-align: center;
-            margin-top: 10px;
+            margin-top: 15px;
             font-size: 0.85rem;
-            color: var(--accent-green);
         }
     </style>
 </head>
@@ -139,30 +96,16 @@
 
     <div class="container">
         <div class="card">
-            <h1>🛡️ IRONSHIELD DEFENSE LAB</h1>
-            <div class="subtitle">Next-Gen Threat Intelligence & Cybersecurity Sandbox</div>
-
-            <div class="section-title">Mission Briefing (About Us)</div>
-            <p>
-                IronShield is an advanced testing and simulation sandbox built for security researchers, analysts, and students to map threat surfaces, monitor live telemetry, and analyze infrastructure resilience in real-time.
-            </p>
-
-            <div class="section-title">Live System Telemetry</div>
-            <div class="status-box">
-                <div class="status-item"><span>Core Firewall:</span> <span>ACTIVE</span></div>
-                <div class="status-item"><span>Sandbox Cluster:</span> <span>ONLINE</span></div>
-                <div class="status-item"><span>Threat Matrix:</span> <span>NOMINAL</span></div>
-            </div>
-
-            <div class="section-title">Join the Cyberlab Roster</div>
-            <p>Submit your operator handle to register your sandbox testing session into the network log.</p>
+            <h1>🛡️ WELCOME TO IRONSHIELD</h1>
+            <p>Your secure sandbox portal is live and operational. Enter your details below to log your session score into the database.</p>
             
-            <div class="interactive-form">
-                <input type="text" id="username" placeholder="Enter Operator Alias (e.g., CyberSherlock)">
-                <input type="number" id="score" placeholder="Enter Simulation Metric (e.g., 100)">
-                <button onclick="submitScore()">Initialize Sync</button>
-                <div id="response-msg"></div>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Your Name or Alias">
+                <input type="number" id="score" placeholder="Your Score">
+                <button onclick="submitScore()">Submit Score</button>
             </div>
+            
+            <div id="response-msg"></div>
         </div>
     </div>
 
@@ -174,7 +117,7 @@
 
             if (!username || !score) {
                 msgEl.style.color = '#ef4444';
-                msgEl.innerText = 'Please fill out both fields.';
+                msgEl.innerText = 'Please fill out all fields.';
                 return;
             }
 
@@ -188,7 +131,7 @@
 
                 if (data.success) {
                     msgEl.style.color = '#10b981';
-                    msgEl.innerText = 'Success: Telemetry logged to database!';
+                    msgEl.innerText = 'Success! Score saved to database.';
                     document.getElementById('username').value = '';
                     document.getElementById('score').value = '';
                 } else {
@@ -197,7 +140,7 @@
                 }
             } catch (err) {
                 msgEl.style.color = '#ef4444';
-                msgEl.innerText = 'Connection failed to server.';
+                msgEl.innerText = 'Failed to connect to server.';
             }
         }
     </script>
