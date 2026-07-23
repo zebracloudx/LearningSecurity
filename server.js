@@ -31,6 +31,14 @@ const cyberlabSchema = new mongoose.Schema({
 });
 const CyberlabUser = mongoose.model('CyberlabUser', cyberlabSchema);
 
+// 5. Define a blueprint and model for Admin Logins / Telemetry Sync
+const adminLogSchema = new mongoose.Schema({
+  user: String,
+  action: String,
+  timestamp: { type: Date, default: Date.now }
+});
+const AdminLog = mongoose.model('AdminLog', adminLogSchema);
+
 app.post('/api/save-score', async (req, res) => {
   try {
     const { username, score } = req.body;
@@ -39,6 +47,28 @@ app.post('/api/save-score', async (req, res) => {
     res.status(201).json({ success: true, message: 'Score saved to MongoDB!' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 6. Admin Login / Sync Route that handles requests from admin.html
+app.post('/api/test-sync', async (req, res) => {
+  try {
+    const { user, action, timestamp } = req.body;
+    
+    // Save login telemetry to MongoDB Atlas
+    const newLog = new AdminLog({
+      user: user || 'Unknown Admin',
+      action: action || 'ADMIN_LOGIN_TIMESTAMP',
+      timestamp: timestamp ? new Date(timestamp) : Date.now()
+    });
+    
+    await newLog.save();
+    console.log("Admin login synced to MongoDB for user:", user);
+    
+    res.status(200).json({ success: true, message: 'Synced and recorded in MongoDB successfully!' });
+  } catch (err) {
+    console.error("MongoDB sync error:", err);
+    res.status(500).json({ success: false, message: err.message });
   }
 });
 
@@ -53,7 +83,9 @@ app.get('/test-db', async (req, res) => {
   }
 });
 
-// 5. Tell the server to start listening for requests on port 3000
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+// 7. Tell the server to start listening for requests
+// Render dynamically assigns a port via process.env.PORT, with fallback to 3000 locally
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
