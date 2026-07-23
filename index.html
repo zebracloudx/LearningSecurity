@@ -3,92 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronShield | Home</title>
+    <title>IronShield | Threat Matrix</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Background image style matching your dark theme */
-            background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(11, 15, 25, 0.85)), 
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(rgba(5, 8, 15, 0.9), rgba(5, 8, 15, 0.9)), 
                         url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
-            color: #f3f4f6;
+            color: #00ffcc;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 550px;
             padding: 20px;
         }
 
         .card {
-            background-color: rgba(19, 28, 46, 0.9);
-            border: 1px solid #1e293b;
+            background-color: rgba(10, 15, 30, 0.85);
+            border: 2px solid #00ffcc;
             border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.25), inset 0 0 15px rgba(0, 255, 204, 0.1);
             text-align: center;
+            position: relative;
+        }
+
+        .card::before {
+            content: "SECURITY OVERRIDE";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #05080f;
+            color: #ff007f;
+            padding: 0 15px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            border: 1px solid #ff007f;
+            border-radius: 4px;
         }
 
         h1 {
-            color: #06b6d4;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+            color: #00ffcc;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+            letter-spacing: 2px;
         }
 
         p {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            color: #8be9fd;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pulse-box {
+            background: rgba(0, 255, 204, 0.05);
+            border: 1px dashed #00ffcc;
+            padding: 20px;
+            border-radius: 8px;
             margin-bottom: 25px;
         }
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        input {
-            background: #0b0f19;
-            border: 1px solid #1e293b;
-            padding: 12px;
-            border-radius: 6px;
-            color: white;
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #06b6d4;
-        }
-
-        button {
-            background: linear-gradient(135deg, #06b6d4, #3b82f6);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
+        .status-text {
+            color: #ff007f;
+            font-size: 1rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.2s;
+            text-shadow: 0 0 8px rgba(255, 0, 127, 0.6);
+            letter-spacing: 1px;
         }
 
-        button:hover {
-            opacity: 0.9;
+        .btn-cyber {
+            background: transparent;
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+            padding: 15px 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        .btn-cyber:hover {
+            background: #00ffcc;
+            color: #05080f;
+            box-shadow: 0 0 25px #00ffcc, 0 0 50px #00ffcc;
         }
 
         #response-msg {
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 0.85rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -96,51 +120,44 @@
 
     <div class="container">
         <div class="card">
-            <h1>🛡️ WELCOME TO IRONSHIELD</h1>
-            <p>Your secure sandbox portal is live and operational. Enter your details below to log your session score into the database.</p>
+            <h1>IRONSHIELD</h1>
+            <p>Advanced Threat Intelligence Matrix & Cyber Defense Sandbox</p>
             
-            <div class="input-group">
-                <input type="text" id="username" placeholder="Your Name or Alias">
-                <input type="number" id="score" placeholder="Your Score">
-                <button onclick="submitScore()">Submit Score</button>
+            <div class="pulse-box">
+                <div class="status-text">STATUS: DEFENSE GRID ONLINE</div>
             </div>
+
+            <button class="btn-cyber" onclick="pingCore()">Engage Telemetry Pulse</button>
             
             <div id="response-msg"></div>
         </div>
     </div>
 
     <script>
-        async function submitScore() {
-            const username = document.getElementById('username').value;
-            const score = document.getElementById('score').value;
+        async function pingCore() {
             const msgEl = document.getElementById('response-msg');
-
-            if (!username || !score) {
-                msgEl.style.color = '#ef4444';
-                msgEl.innerText = 'Please fill out all fields.';
-                return;
-            }
+            msgEl.style.color = '#8be9fd';
+            msgEl.innerText = 'TRANSMITTING NEURAL PACKET...';
 
             try {
                 const response = await fetch('/api/save-score', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, score: Number(score) })
+                    body: JSON.stringify({ username: 'Matrix_Operator', score: 999 })
                 });
                 const data = await response.json();
 
                 if (data.success) {
-                    msgEl.style.color = '#10b981';
-                    msgEl.innerText = 'Success! Score saved to database.';
-                    document.getElementById('username').value = '';
-                    document.getElementById('score').value = '';
+                    msgEl.style.color = '#00ffcc';
+                    msgEl.style.textShadow = '0 0 8px rgba(0, 255, 204, 0.8)';
+                    msgEl.innerText = 'SUCCESS: NODE SECURED & LOGGED TO ATLAS!';
                 } else {
-                    msgEl.style.color = '#ef4444';
-                    msgEl.innerText = 'Error: ' + data.error;
+                    msgEl.style.color = '#ff007f';
+                    msgEl.innerText = 'ERROR: SIGNAL INTERCEPTED';
                 }
             } catch (err) {
-                msgEl.style.color = '#ef4444';
-                msgEl.innerText = 'Failed to connect to server.';
+                msgEl.style.color = '#ff007f';
+                msgEl.innerText = 'CRITICAL: CONNECTION FAILED';
             }
         }
     </script>
