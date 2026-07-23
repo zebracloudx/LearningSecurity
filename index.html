@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronShield | Admin Portal</title>
+    <title>IronShield | Dashboard</title>
     <style>
         :root {
             --accent-cyan: #38bdf8;
@@ -28,147 +28,131 @@
             justify-content: center;
             align-items: center;
         }
-        .login-card {
+        .dashboard-card {
             background-color: rgba(17, 24, 39, 0.9);
             backdrop-filter: blur(8px);
-            border: 1px solid var(--accent-pink);
-            border-radius: 10px;
-            padding: 2.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 0 25px rgba(244, 63, 94, 0.3);
+            max-width: 450px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
             text-align: center;
         }
         h2 {
             font-family: 'Courier New', Courier, monospace;
-            color: var(--accent-pink);
+            color: var(--accent-cyan);
             margin-top: 0;
-            text-shadow: 0 0 8px rgba(244, 63, 94, 0.5);
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+            font-size: 1.5rem;
         }
-        .input-group {
-            margin-bottom: 1.25rem;
-            text-align: left;
+        .bunny-container {
+            margin: 1.5rem 0;
         }
-        label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.4rem;
+        .bunny-container img {
+            width: 160px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
         }
-        input {
-            width: 100%;
-            padding: 0.75rem;
+        .telemetry-box {
             background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 6px;
-            color: var(--text-main);
-            box-sizing: border-box;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
         }
-        input:focus {
-            border-color: var(--accent-cyan);
-            outline: none;
-            box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+        .telemetry-box h4 {
+            color: var(--accent-green);
+            margin: 0 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
-        .btn-submit {
-            width: 100%;
+        .telemetry-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .btn-logout {
             background-color: var(--accent-pink);
             color: #0b0f19;
             border: none;
-            padding: 0.75rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 0 10px rgba(244, 63, 94, 0.4);
-            margin-top: 0.5rem;
+            width: 100%;
+            text-decoration: none;
+            display: inline-block;
+            box-sizing: border-box;
         }
-        .btn-submit:hover {
+        .btn-logout:hover {
             background-color: #fb7185;
             box-shadow: 0 0 20px var(--accent-pink);
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 1.5rem;
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        #error-msg {
-            color: var(--accent-pink);
-            font-size: 0.85rem;
-            margin-top: 1rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
-        <h2>🔒 Admin Portal</h2>
-        <form id="login-form" onsubmit="handleAdminLogin(event)">
-            <div class="input-group">
-                <label for="email">Admin Email</label>
-                <input type="email" id="email" required placeholder="admin@ironshield.io">
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" required placeholder="••••••••">
-            </div>
-            <button type="submit" class="btn-submit">Authenticate</button>
-            <div id="error-msg"></div>
-        </form>
-        <a href="index.html" class="back-link">&larr; Back to Main Terminal</a>
+    <div class="dashboard-card">
+        <h2>WELCOME HOME! SHERLOCKS 🕵️‍♂️</h2>
+        
+        <div class="bunny-container">
+            <!-- Using your existing image asset or fallback -->
+            <img src="Gemini_Generated_Image_i7d7n6i7d7n6i7d7.png" alt="Sherlock Bunny" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300'">
+        </div>
+        
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Congratulations!!</p>
+
+        <div class="telemetry-box">
+            <h4>📋 Session Telemetry</h4>
+            <ul>
+                <li><strong>Active User:</strong> <span id="user-email">admin@ironshield.io</span></li>
+                <li><strong>Last Login:</strong> <span id="login-time">Just now</span></li>
+                <li><strong>Database Sync:</strong> Secure ✅</li>
+            </ul>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.75rem; text-align: right;" id="timer">Auto-logout in: 59s</div>
+        </div>
+
+        <button onclick="handleLogout()" class="btn-logout">🔒 Secure Logout</button>
     </div>
 
-    <!-- Supabase & Live Sync Script -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         const supabaseUrl = 'https://xobbptbvknxdmajfpyoy.supabase.co'; 
         const supabaseKey = 'sb_publishable_IYIGDKRlLNB0YRcVFpXBMg_klP4MQVV';    
         const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        async function handleAdminLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('error-msg');
-            errorDiv.textContent = "Authenticating...";
-
-            // 1. Authenticate with Supabase
-            const { data, error } = await _supabase.auth.signInWithPassword({
-                email: email,
-                password: password,
-            });
-
-            if (error) {
-                errorDiv.textContent = error.message;
-                return;
+        // Populate session info if available
+        async function loadSession() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (session && session.user) {
+                document.getElementById('user-email').textContent = session.user.email;
             }
-
-            // 2. Trigger MongoDB Sync on Render Server
-            try {
-                await fetch('https://ir0nshield-main.onrender.com/api/test-sync', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        user: email, 
-                        action: 'ADMIN_LOGIN_SYNC',
-                        timestamp: new Date().toISOString()
-                    })
-                });
-            } catch (mongoErr) {
-                console.error("MongoDB background sync note:", mongoErr);
-            }
-
-            // Success redirect or state update
-            errorDiv.style.color = "var(--accent-green)";
-            errorDiv.textContent = "Authentication Success! Redirecting...";
-            setTimeout(() => {
-                window.location.reload(); 
-            }, 1000);
+            document.getElementById('login-time').textContent = new Date().toLocaleTimeString();
         }
+        loadSession();
+
+        function handleLogout() {
+            _supabase.auth.signOut();
+            window.location.href = 'admin.html';
+        }
+
+        // Auto-logout countdown visual
+        let timeLeft = 59;
+        setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                window.location.href = 'admin.html';
+            }
+            document.getElementById('timer').textContent = `Auto-logout in: ${timeLeft}s`;
+        }, 1000);
     </script>
 </body>
 </html>
