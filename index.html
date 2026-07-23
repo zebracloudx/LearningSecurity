@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronShield | Dashboard</title>
+    <title>IronShield.io</title>
     <style>
         :root {
             --accent-cyan: #38bdf8;
@@ -17,142 +17,123 @@
             margin: 0;
             padding: 0;
             color: var(--text-main);
-            background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.9)), 
+            background: linear-gradient(rgba(11, 15, 25, 0.65), rgba(11, 15, 25, 0.75)), 
                         url('Gemini_Generated_Image_i7d7n6i7d7n6i7d7.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
         }
-        .dashboard-card {
-            background-color: rgba(17, 24, 39, 0.9);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 12px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+        .hero {
+            padding: 5rem 2rem 3rem 2rem;
             text-align: center;
         }
-        h2 {
+        .hero h1 {
             font-family: 'Courier New', Courier, monospace;
+            font-size: 3rem;
             color: var(--accent-cyan);
-            margin-top: 0;
-            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
-            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
         }
-        .bunny-container {
-            margin: 1.5rem 0;
-        }
-        .bunny-container img {
-            width: 160px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
-        }
-        .telemetry-box {
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: left;
-            font-family: monospace;
-            font-size: 0.85rem;
-            margin: 1.5rem 0;
-        }
-        .telemetry-box h4 {
-            color: var(--accent-green);
-            margin: 0 0 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .telemetry-box ul {
-            margin: 0;
-            padding-left: 1.2rem;
+        .hero p {
             color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
-        .btn-logout {
-            background-color: var(--accent-pink);
-            color: #0b0f19;
-            border: none;
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .btn {
+            background-color: rgba(17, 24, 39, 0.7);
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
             padding: 0.75rem 1.5rem;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 10px rgba(244, 63, 94, 0.4);
-            width: 100%;
             text-decoration: none;
-            display: inline-block;
-            box-sizing: border-box;
+            transition: all 0.2s ease;
         }
-        .btn-logout:hover {
-            background-color: #fb7185;
-            box-shadow: 0 0 20px var(--accent-pink);
+        .btn:hover {
+            background-color: var(--accent-cyan);
+            color: #0b0f19;
+        }
+        .btn-pink {
+            border-color: var(--accent-pink);
+            color: var(--accent-pink);
+        }
+        .btn-pink:hover {
+            background-color: var(--accent-pink);
+            color: #0b0f19;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2.1rem auto;
+            padding: 0 1.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background-color: rgba(17, 24, 39, 0.8);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-green);
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+            background-color: rgba(11, 15, 25, 0.75);
         }
     </style>
 </head>
 <body>
-
-    <div class="dashboard-card">
-        <h2>WELCOME HOME! SHERLOCKS 🕵️‍♂️</h2>
-        
-        <div class="bunny-container">
-            <!-- Using your existing image asset or fallback -->
-            <img src="Gemini_Generated_Image_i7d7n6i7d7n6i7d7.png" alt="Sherlock Bunny" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300'">
+    <div class="hero">
+        <h1>ir0nShield.io</h1>
+        <p>A gamified platform for ethical hacking, network analysis, and penetration testing drills inspired by top-tier CTF environments.</p>
+        <div class="btn-group">
+            <a href="#modules" class="btn">Explore Modules</a>
+            <a href="admin.html" class="btn btn-pink">Admin Portal</a>
         </div>
-        
-        <p style="color: var(--text-muted); margin-bottom: 1rem;">Congratulations!!</p>
-
-        <div class="telemetry-box">
-            <h4>📋 Session Telemetry</h4>
-            <ul>
-                <li><strong>Active User:</strong> <span id="user-email">admin@ironshield.io</span></li>
-                <li><strong>Last Login:</strong> <span id="login-time">Just now</span></li>
-                <li><strong>Database Sync:</strong> Secure ✅</li>
-            </ul>
-            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.75rem; text-align: right;" id="timer">Auto-logout in: 59s</div>
-        </div>
-
-        <button onclick="handleLogout()" class="btn-logout">🔒 Secure Logout</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        const supabaseUrl = 'https://xobbptbvknxdmajfpyoy.supabase.co'; 
-        const supabaseKey = 'sb_publishable_IYIGDKRlLNB0YRcVFpXBMg_klP4MQVV';    
-        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    <div class="container" id="modules">
+        <div class="grid">
+            <div class="card">
+                <h3>01. Web Security</h3>
+                <p>Test vulnerabilities ranging from SQL Injection payloads to cross-site scripting (XSS) and broken authentication.</p>
+            </div>
+            <div class="card">
+                <h3>02. Network Traffic</h3>
+                <p>Analyze TCP/IP packet captures, track connection handshakes, and build custom packet analyzers.</p>
+            </div>
+            <div class="card">
+                <h3>03. IP Tracking Lab</h3>
+                <p>Live request logger to capture client visitor metadata, user-agents, and remote IP addresses.</p>
+                <a href="ip-tracker.html" class="btn" style="display:inline-block; margin-top:1rem; padding:0.4rem 0.8rem; font-size:0.8rem;">Open Lab</a>
+            </div>
+        </div>
+    </div>
 
-        // Populate session info if available
-        async function loadSession() {
-            const { data: { session } } = await _supabase.auth.getSession();
-            if (session && session.user) {
-                document.getElementById('user-email').textContent = session.user.email;
-            }
-            document.getElementById('login-time').textContent = new Date().toLocaleTimeString();
-        }
-        loadSession();
-
-        function handleLogout() {
-            _supabase.auth.signOut();
-            window.location.href = 'admin.html';
-        }
-
-        // Auto-logout countdown visual
-        let timeLeft = 59;
-        setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-                window.location.href = 'admin.html';
-            }
-            document.getElementById('timer').textContent = `Auto-logout in: ${timeLeft}s`;
-        }, 1000);
-    </script>
+    <footer>
+        <p>&copy; IronShield.io &bull; For Educational Purposes Only</p>
+    </footer>
 </body>
 </html>
