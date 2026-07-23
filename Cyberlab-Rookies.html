@@ -1,1 +1,26 @@
-<h1>Hello Cyberlab Rookies - Security Training</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyberlab Rookies - Security Training</title>
+</head>
+<body>
+    <h1>Hello Cyberlab Rookies - Security Training</h1>
+    
+    <button id="testBtn">Test Database Connection</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('testBtn').addEventListener('click', async () => {
+            try {
+                // Replace with your actual Render URL
+                const response = await fetch('https://ir0nshield-mern-backend.onrender.com/test-db');
+                const data = await response.json();
+                document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+            } catch (err) {
+                document.getElementById('result').innerText = 'Error: ' + err.message;
+            }
+        });
+    </script>
+</body>
+</html>
